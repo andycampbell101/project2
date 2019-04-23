@@ -39,6 +39,10 @@ get_header(); ?>
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
+
+				?>
+
+				
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
 	if ( is_sticky() && is_home() ) :
@@ -76,26 +80,9 @@ get_header(); ?>
 		</div><!-- .post-thumbnail -->
 	<?php endif; ?>
 
-	<div class="entry-content">
-		<?php
-		/* translators: %s: Name of current post */
-		the_content(
-			sprintf(
-				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ),
-				get_the_title()
-			)
-		);
-
-		wp_link_pages(
-			array(
-				'before'      => '<div class="page-links">' . __( 'Pages:', 'twentyseventeen' ),
-				'after'       => '</div>',
-				'link_before' => '<span class="page-number">',
-				'link_after'  => '</span>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
+	<div class="entry-summary">
+		<?php the_excerpt(); ?>
+	</div><!-- .entry-summary -->
 
 	<?php
 	if ( is_single() ) {
@@ -104,7 +91,7 @@ get_header(); ?>
 	?>
 
 </article>
-
+<?php 
 			endwhile;
 
 			the_posts_pagination(
