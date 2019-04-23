@@ -1,73 +1,51 @@
 <?php
 /**
- * The template for displaying the footer.
+ * The template for displaying the footer
  *
- * @package OceanWP WordPress theme
- */ ?>
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package WordPress
+ * @subpackage Twenty_Seventeen
+ * @since 1.0
+ * @version 1.2
+ */
 
-        </main><!-- #main -->
+?>
 
-        <?php do_action( 'ocean_after_main' ); ?>
+		</div><!-- #content -->
 
-        <?php do_action( 'ocean_before_footer' ); ?>
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="wrap">
+				<?php
+				get_template_part( 'template-parts/footer/footer', 'widgets' );
 
-        <?php
-        // Elementor `footer` location
-        if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'footer' ) ) { ?>
+				if ( has_nav_menu( 'social' ) ) :
+					?>
+					<nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'twentyseventeen' ); ?>">
+						<?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'social',
+									'menu_class'     => 'social-links-menu',
+									'depth'          => 1,
+									'link_before'    => '<span class="screen-reader-text">',
+									'link_after'     => '</span>' . twentyseventeen_get_svg( array( 'icon' => 'chain' ) ),
+								)
+							);
+						?>
+					</nav><!-- .social-navigation -->
+					<?php
+				endif;
 
-            <?php do_action( 'ocean_footer' ); ?>
-            
-        <?php } ?>
-
-        <?php do_action( 'ocean_after_footer' ); ?>
-                
-    </div><!-- #wrap -->
-
-    <?php do_action( 'ocean_after_wrap' ); ?>
-
-</div><!-- #outer-wrap -->
-
-<?php do_action( 'ocean_after_outer_wrap' ); ?>
-
-<?php
-// If is not sticky footer
-if ( ! class_exists( 'Ocean_Sticky_Footer' ) ) {
-    get_template_part( 'partials/scroll-top' );
-} ?>
-
-<?php
-// Search overlay style
-if ( 'overlay' == oceanwp_menu_search_style() ) {
-    get_template_part( 'partials/header/search-overlay' );
-} ?>
-
-<?php
-// If sidebar mobile menu style
-if ( 'sidebar' == oceanwp_mobile_menu_style() ) {
-    
-    // Mobile panel close button
-    if ( get_theme_mod( 'ocean_mobile_menu_close_btn', true ) ) {
-        get_template_part( 'partials/mobile/mobile-sidr-close' );
-    } ?>
-
-    <?php
-    // Mobile Menu (if defined)
-    get_template_part( 'partials/mobile/mobile-nav' ); ?>
-
-    <?php
-    // Mobile search form
-    if ( get_theme_mod( 'ocean_mobile_menu_search', true ) ) {
-        get_template_part( 'partials/mobile/mobile-search' );
-    }
-
-} ?>
-
-<?php
-// If full screen mobile menu style
-if ( 'fullscreen' == oceanwp_mobile_menu_style() ) {
-    get_template_part( 'partials/mobile/mobile-fullscreen' );
-} ?>
-
+				get_template_part( 'template-parts/footer/site', 'info' );
+				?>
+			</div><!-- .wrap -->
+		</footer><!-- #colophon -->
+	</div><!-- .site-content-contain -->
+</div><!-- #page -->
 <?php wp_footer(); ?>
+
 </body>
 </html>

@@ -1,21 +1,21 @@
 <?php
 /**
- * The template for displaying search forms.
+ * Template for displaying search forms in Twenty Seventeen
  *
- * @package OceanWP WordPress theme
+ * @package WordPress
+ * @subpackage Twenty_Seventeen
+ * @since 1.0
+ * @version 1.0
  */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+?>
 
-// Post type
-$post_type = get_theme_mod( 'ocean_menu_search_source', 'any' ); ?>
+<?php $unique_id = esc_attr( twentyseventeen_unique_id( 'search-form-' ) ); ?>
 
-<form method="get" class="searchform" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<input type="text" class="field" name="s" id="s" placeholder="<?php esc_html_e( 'Search', 'oceanwp' ); ?>">
-	<?php if ( 'any' != $post_type ) { ?>
-		<input type="hidden" name="post_type" value="<?php echo esc_attr( $post_type ); ?>">
-	<?php } ?>
+<form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+	<label for="<?php echo $unique_id; ?>">
+		<span class="screen-reader-text"><?php echo _x( 'Search for:', 'label', 'twentyseventeen' ); ?></span>
+	</label>
+	<input type="search" id="<?php echo $unique_id; ?>" class="search-field" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'twentyseventeen' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+	<button type="submit" class="search-submit"><?php echo twentyseventeen_get_svg( array( 'icon' => 'search' ) ); ?><span class="screen-reader-text"><?php echo _x( 'Search', 'submit button', 'twentyseventeen' ); ?></span></button>
 </form>

@@ -1,55 +1,43 @@
 <?php
 /**
- * The template for displaying all pages.
+ * The template for displaying all pages
  *
  * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages and that other
- * 'pages' on your WordPress site will use a different template.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
  *
- * @package OceanWP WordPress theme
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package WordPress
+ * @subpackage Twenty_Seventeen
+ * @since 1.0
+ * @version 1.0
  */
 
 get_header(); ?>
 
-	<?php do_action( 'ocean_before_content_wrap' ); ?>
+<div class="wrap">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
-	<div id="content-wrap" class="container clr">
+			<?php
+			while ( have_posts() ) :
+				the_post();
 
-		<?php do_action( 'ocean_before_primary' ); ?>
+				get_template_part( 'template-parts/page/content', 'page' );
 
-		<div id="primary" class="content-area clr">
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) :
+					comments_template();
+				endif;
 
-			<?php do_action( 'ocean_before_content' ); ?>
+			endwhile; // End of the loop.
+			?>
 
-			<div id="content" class="site-content clr">
+		</main><!-- #main -->
+	</div><!-- #primary -->
+</div><!-- .wrap -->
 
-				<?php do_action( 'ocean_before_content_inner' ); ?>
-
-				<?php
-				// Elementor `single` location
-				if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'single' ) ) {
-					
-					// Start loop
-					while ( have_posts() ) : the_post();
-
-						get_template_part( 'partials/page/layout' );
-
-					endwhile;
-
-				} ?>
-
-				<?php do_action( 'ocean_after_content_inner' ); ?>
-
-			</div><!-- #content -->
-
-			<?php do_action( 'ocean_after_content' ); ?>
-
-		</div><!-- #primary -->
-
-		<?php do_action( 'ocean_after_primary' ); ?>
-
-	</div><!-- #content-wrap -->
-
-	<?php do_action( 'ocean_after_content_wrap' ); ?>
-
-<?php get_footer(); ?>
+<?php
+get_footer();
