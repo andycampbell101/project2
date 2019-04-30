@@ -554,3 +554,7 @@ input[type="checkbox"] {
 		margin-left: -20%;
 	}
 }
+
+.hero-text {
+    color: white;
+}
