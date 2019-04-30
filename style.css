@@ -464,6 +464,7 @@ h2.hero-text {
     background-color: #000!important;
     padding: 10px;
     position:inherit;
+    margin-top: 10px;
 }
 
 h3 {
