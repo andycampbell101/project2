@@ -4332,6 +4332,6 @@ p > object:only-child {
 	}
 }
 
-.hero-text {
+.hero-text > h2 {
     color: white;
 }
