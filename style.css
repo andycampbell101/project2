@@ -4339,3 +4339,7 @@ p > object:only-child {
 .site-branding-text .hero-text h2 {
     color: #fff!important;
 }
+
+body.home .site-content-contain, body.home .menu-scroll-down {
+    display: none;
+}
