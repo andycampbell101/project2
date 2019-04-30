@@ -20,7 +20,7 @@
 		?>
 
 		<div class="panel-image" style="background-image: url(<?php echo esc_url( $thumbnail[0] ); ?>);">
-			<div class="panel-image-prop" style="padding-top: <?php echo esc_attr( $ratio ); ?>%"></div>
+            
             <div class="entry-content">
 				<?php
 					/* translators: %s: Name of current post */
@@ -32,6 +32,8 @@
 					);
 					?>
 			</div><!-- .entry-content -->
+            
+			<div class="panel-image-prop" style="padding-top: <?php echo esc_attr( $ratio ); ?>%"></div>
 		</div><!-- .panel-image -->
 
 	<?php endif; ?>
