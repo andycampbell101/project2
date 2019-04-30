@@ -465,6 +465,7 @@ h2.hero-text {
     padding: 10px;
     position: static;
     margin-bottom: 150px;
+    text-align: center;
 }
 
 h3 {
