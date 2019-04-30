@@ -16,18 +16,7 @@
 
 		<div class="site-branding-text">
 			<?php if ( is_front_page() ) : ?>
-			<div class="entry-content">
-				<?php
-					/* translators: %s: Name of current post */
-					the_content(
-						sprintf(
-							__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ),
-							get_the_title()
-						)
-					);
-					?>
-			</div><!-- .entry-content -->	
-            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<?php else : ?>
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 			<?php endif; ?>
